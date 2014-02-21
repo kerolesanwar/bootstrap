@@ -90,6 +90,23 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+@font-face {
+	font-family:"Imitation";
+	src:url(../"IMIT.TTF");
+}
+#zoom {
+}
+#zoom2{
+	left:300px;
+}
+#zoom3 {
+	left:600px;
+}
+.zoomProps {
+	height:240px;
+	width:230px;
+	position:absolute;
+}
 #zoomwrapper {
 	height:377px;
 	width:600px;
