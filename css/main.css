@@ -91,7 +91,7 @@ textarea {
    Author's custom styles
    ========================================================================== */
 @font-face {
-i	font-family:"Imitation";
+	font-family:"Imitation";
 	src:url("../IMIT.TTF");
 }
 #zoom {
