@@ -166,4 +166,19 @@ var zIndexBackup = 10;
 		container.bind("dragend", $.proxy(dragview.OnDragEnd, dragview));
 		
 		setInterval($.proxy(dragview.WatchDrag, dragview), 10);
+		
+		function transform(e) {
+
+			var cssScale = "scaleX("+ scaleFactor +") scaleY("+ scaleFactor +") rotateZ("+ e.rotation +"deg)";
+
+			element.css({
+				webkitTransform: cssScale,
+				webkitTransformOrigin: cssOrigin,
+
+				transform: cssScale,
+				transformOrigin: cssOrigin,
+			});
+
+
+		}
 }
