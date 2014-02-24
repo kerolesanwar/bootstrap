@@ -88,4 +88,82 @@ var zIndexBackup = 10;
 		}
 	}
 
+	function ZoomView(container, element) {
+
+		container = $(container).hammer({
+			prevent_default: true,
+			scale_treshold: 0,
+			drag_min_distance: 0
+		});
+
+		element = $(element);
+
+
+		var displayWidth = container.width();
+		var displayHeight = container.height();
+
+		var MIN_ZOOM = 1;
+		var MAX_ZOOM = 3;
+
+		var scaleFactor = 1;
+		var previousScaleFactor = 1;
+
+		var startX = 0;
+		var startY = 0;
+
+		var translateX = 0;
+		var translateY = 0;
+
+		var previousTranslateX = 0;
+		var previousTranslateY = 0;
+
+
+		var tch1 = 0, 
+		    tch2 = 0, 
+		    tcX = 0, 
+		    tcY = 0,
+		    toX = 0,
+		    toY = 0,
+		    cssOrigin = "";
+
+		container.bind("transformstart", function(event){
+
+			e = event
+
+			tch1 = [e.touches[0].x, e.touches[0].y],
+			tch2 = [e.touches[1].x, e.touches[1].y]
+
+			tcX = (tch1[0]+tch2[0])/2,
+			tcY = (tch1[1]+tch2[1])/2
+
+			toX = tcX
+			toY = tcY
+
+			var left = $(element).offset().left;
+			var top = $(element).offset().top;
+
+			cssOrigin = (-(left) + toX)/scaleFactor +"px "+ (-(top) + toY)/scaleFactor +"px";
+		})
+	
+		container.bind("transform", function(event) {
+			scaleFactor = previousScaleFactor * event.scale;
+
+			scaleFactor = Math.max(MIN_ZOOM, Math.min(scaleFactor, MAX_ZOOM));
+			transform(event);
+		});
+
+		container.bind("transformend", function(event) {
+			previousScaleFactor = scaleFactor;
+		});
+
+
+		/**
+		 * * on drag
+		 * */
+		var dragview = new DragView($(container));
+		container.bind("dragstart", $.proxy(dragview.OnDragStart, dragview));
+		container.bind("drag", $.proxy(dragview.OnDrag, dragview));
+		container.bind("dragend", $.proxy(dragview.OnDragEnd, dragview));
+		
+		setInterval($.proxy(dragview.WatchDrag, dragview), 10);
 }
