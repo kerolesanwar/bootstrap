@@ -1,6 +1,13 @@
 $(function() {
+	var zoom = new ZoomView('#zoom','#zoom :first');
+		var zoom2 = new ZoomView('#zoom2','#zoom2 :first');
+		var zoom3 = new ZoomView('#zoom3','#zoom3 :first');
+	});
 
-var zIndexBackup = 10;
+
+
+
+	var zIndexBackup = 10;
 
 	function DragView(target) {
 		this.target = target[0];
