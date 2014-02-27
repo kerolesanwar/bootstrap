@@ -1,4 +1,4 @@
-r debug_el = $("#debug");
+var debug_el = $("#debug");
 function debug(text) {
 debug_el.text(text);
 }
