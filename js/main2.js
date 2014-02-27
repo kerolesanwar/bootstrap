@@ -158,4 +158,22 @@ break;
 var hammertime = new Hammer(element[0], { drag_lock_to_axis: true });
 hammertime.on("release dragleft dragright swipeleft swiperight", handleHammer);
 }
+var carousel = new Carousel("#carousel");
+carousel.init();
 
+var container = document.getElementById("container");
+var hammertime = new Hammer(container, { drag_max_touches: 0 });
+hammertime.on("touch drag", function(ev) {
+var touches = ev.gesture.touches;
+
+ev.gesture.preventDefault();
+
+for(var t = 0, len = touches.length; t < len; t++) {
+target = touches[t].target;
+if(target.className.indexOf("drag") < 0) {
+return;
+}
+target.style.left = (touches[t].pageX - 50) + "px";
+target.style.top = (touches[t].pageY - 50) + "px";
+}
+});
