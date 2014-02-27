@@ -49,6 +49,25 @@ src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 <script src="js/plugins.js"></script>
 <script src="js/main2.js"></script>
 
+<script>
+var container = document.getElementById("container");
+var hammertime = new Hammer(container, { drag_max_touches: 0 });
+hammertime.on("touch drag", function(ev) {
+var touches = ev.gesture.touches;
+
+ev.gesture.preventDefault();
+
+for(var t = 0, len = touches.length; t < len; t++) {
+target = touches[t].target;
+if(target.className.indexOf("drag") < 0) {
+return;
+}
+target.style.left = (touches[t].pageX - 50) + "px";
+target.style.top = (touches[t].pageY - 50) + "px";
+}
+});
+</script>
+
 </body>
 </html>
 
