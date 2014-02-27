@@ -160,18 +160,30 @@ text-shadow: -1px -1px 0 rgba(0,0,0,.2);
 }
 
 #carousel li.pane1 { 
-background: url("../1920-1080-210971.jpg"); 
+background: url("../146786.jpg"); 
 font-size:300px;
 background-size:100% 100%;
 }
-#carousel li.pane2 { background: url("../210862.jpg");
+#carousel li.pane2 { background: url("../210971.jpg");
 background-repeat:no-repeat;
 background-size: 100% 100%;
-background
 }
-#carousel li.pane3 { background: #d06b64; }
-#carousel li.pane4 { background: #cd74e6; }
-#carousel li.pane5 { background: #9fe1e7; }
+#carousel li.pane3 { 
+background: url("../225022.jpg");
+font-size:300px;
+background-size:100% 100%;
+
+}
+#carousel li.pane4 {
+background: url("../322963.jpg");
+font-size:300px;
+background-size:100% 100%;
+
+}
+#carousel li.pane5 {
+background: url("../350472.jpg");
+font-size:300px;
+background-size:100% 100%;
 }
 
 h1 {
